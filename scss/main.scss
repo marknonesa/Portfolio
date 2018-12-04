@@ -1,0 +1,270 @@
+@import "config";
+@import "_menu";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  @include background;
+  background: $primary-color;
+  color: set-text-color($primary-color);
+  height: 100%;
+  margin: 0;
+  font-family: "Segoe Ui", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 400;
+
+  &.lg-heading {
+    font-size: 6rem;
+  }
+  &.sm-heading {
+    margin-bottom: 2rem;
+    padding: 0.2rem 1rem;
+    background: rgba(lighten($primary-color, 2), 0.5);
+  }
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+header {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+}
+
+.text-secondary {
+  color: $secondary-color;
+  &-about {
+    font-size: 1.3rem;
+  }
+}
+main {
+  padding: 4rem;
+  min-height: calc(100vh - 60px);
+
+  .icons {
+    margin-top: 1rem;
+
+    a {
+      padding: 0.4rem;
+
+      &:hover {
+        // color: grey;
+        color: $secondary-color;
+        color: set-text-color;
+        font-size: 25px;
+        @include easeOut();
+      }
+    }
+  }
+
+  &#home {
+    overflow: hidden; /* no scrollbars*/
+    h1 {
+      margin-top: 20vh; /* */
+    }
+  }
+}
+
+.about-info {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-areas:
+    "bioimage bio bio"
+    "latest latest latest"
+    "job1 job2 job3";
+  grid-template-columns: repeat(3, 1fr);
+
+  .bio-image {
+    grid-area: bioimage;
+    margin: auto;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border: $secondary-color 5px solid;
+  }
+
+  .row {
+    display: flex;
+    .column {
+      flex: 50%;
+    }
+  }
+
+  .bio {
+    grid-area: bio;
+    font-size: 1.3rem;
+  }
+
+  .latest {
+    grid-area: latest;
+    background: lighten($primary-color, 5);
+    padding: 0.5rem;
+    border-bottom: $secondary-color 5px solid;
+  }
+  .job-1 {
+    grid-area: job1;
+  }
+
+  .job-2 {
+    grid-area: job2;
+  }
+  .job-3 {
+    grid-area: job3;
+  }
+
+  .job {
+    background: lighten($primary-color, 5);
+    padding: 0.5rem;
+    border-bottom: $secondary-color 5px solid;
+  }
+}
+
+.lists {
+  list-style-type: none;
+  font-size: 1.2rem;
+  color: $secondary-color;
+  &-certifications {
+    font-size: 1.2rem;
+    color: $secondary-color;
+    list-style-type: none;
+    margin-top: 1rem;
+  }
+}
+
+.sbskills {
+  color: #fff;
+  font-size: 1rem;
+}
+
+//work/projects
+
+.projects {
+  display: grid;
+  grid-gap: 0.7rem;
+  grid-template-columns: repeat(3, 1fr);
+
+  img {
+    width: 100%;
+    border: 3px #fff solid;
+
+    &:hover {
+      opacity: 0.5;
+      border-color: $secondary-color;
+      @include easeOut;
+    }
+  }
+}
+
+//cONTACT pAGE
+
+.boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 1rem;
+
+  div {
+    font-size: 2rem;
+    border: 3px #fff solid;
+    padding: 1.5rem 2.5rem;
+    margin-bottom: 3rem;
+    @include easeOut;
+
+    &:hover {
+      padding: 0.5rem 1.5rem;
+      background: white;
+      color: set-text-color(grey);
+      span {
+        color: set-text-color(grey);
+      }
+    }
+  }
+}
+
+// Button Styles
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 0;
+  margin-bottom: 0.3rem;
+  &:hover {
+    background: $secondary-color;
+    color: set-text-color ($secondary-color);
+  }
+}
+
+.btn-dark {
+  @extend .btn;
+  background: darken ($primary-color, 50);
+  color: #fff;
+}
+
+.btn-light {
+  @extend .btn;
+  background: lighten($primary-color, 50);
+  color: #333;
+}
+
+#main-footer {
+  text-align: center;
+  padding: 1rem;
+  background: darken($primary-color, 10);
+  opacity: 0.5;
+  color: set-text-color ($primary-color);
+  height: 60px;
+}
+
+//Shift Right
+.lg-heading {
+  &:before {
+    content: ">";
+    font: inherit;
+    vertical-align: 0.1em;
+    display: inline-block;
+    transform: scaleY(0) translateX(-1em);
+    margin-right: -0.25em;
+    -webkit-transform: scaleY(0) translateX(-1em);
+    -moz-transform: scaleY(0) translateX(-1em);
+    -ms-transform: scaleY(0) translateX(-1em);
+    -o-transform: scaleY(0) translateX(-1em);
+  }
+
+  &:before,
+  .char {
+    transition: transform 0.8s cubic-bezier(0.75, 0, 0.24, 0.98);
+    transition-delay: calc(0.015s * var(--char-index));
+  }
+
+  .char {
+    transform: translateX(-0.15em);
+  }
+
+  &:hover:before {
+    transform: scaleY(1) translateX(0em);
+  }
+
+  &:hover .char {
+    transform: translateX(0.2em);
+    transform: translateX(0.5em) translateX(calc(0.1em * var(--char-index)));
+    -webkit-transform: translateX(0.2em);
+    -moz-transform: translateX(0.2em);
+    -ms-transform: translateX(0.2em);
+    -o-transform: translateX(0.2em);
+  }
+}
+
+@import "_mobile";

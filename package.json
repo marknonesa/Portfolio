@@ -1,0 +1,15 @@
+{
+  "name": "my-portfolio",
+  "version": "1.0.0",
+  "description": "OnlineResume",
+  "main": "index.js",
+  "scripts": {
+    "sass": "node-sass -w scss/ -o dist/css/ --recursive"
+  },
+  "author": "Mark Lester Nonesa",
+  "license": "MIT",
+  "dependencies": {
+    "node-sass": "^4.9.2",
+    "splitting": "^1.0.5"
+  }
+}
